@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="411dp"
+        android:layout_height="312dp"
+        android:layout_marginTop="320dp"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent"
+        tools:context=".Home_MapsActivity" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="302dp"
+        android:layout_height="53dp"
+        android:inputType="text"
+        android:queryHint="Location"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="46dp" />
+
+    <ScrollView
+        android:layout_width="398dp"
+        android:layout_height="74dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="199dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="86dp"
+        android:layout_height="71dp"
+        android:src="@mipmap/ic_app"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="199dp" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="94dp"
+        android:layout_height="72dp"
+        android:src="@mipmap/ic_app1"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="92dp"
+        android:layout_height="71dp"
+        android:src="@mipmap/ic_app1"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="201dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/searchView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
