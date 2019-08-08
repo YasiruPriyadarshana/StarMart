@@ -6,38 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".shop_content">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="411dp"
-        android:layout_height="199dp"
-        app:srcCompat="@android:color/holo_orange_light"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="6dp" />
 
-    <HorizontalScrollView
-        android:layout_width="403dp"
-        android:layout_height="511dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="201dp">
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="414dp"
+        android:layout_height="197dp"
+        app:srcCompat="@android:color/background_light"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="-2dp" />
+
+    <ScrollView
+        android:layout_width="413dp"
+        android:layout_height="731dp"
+        tools:layout_editor_absoluteX="-5dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" />
-    </HorizontalScrollView>
-
-    <fragment
-        android:id="@+id/shop_frag"
-        android:name="com.wonder.starmart.ShopFragment1"
-        android:layout_width="407dp"
-        android:layout_height="401dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="205dp"></fragment>
+    </ScrollView>
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="363dp"
-        android:layout_height="68dp"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="606dp" />
+        android:layout_width="306dp"
+        android:layout_height="52dp"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="639dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.view.GestureDetector.*;
 import android.gesture.Gesture;
 import android.view.MotionEvent;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.view.Menu;
 import android.widget.ImageView;
@@ -36,8 +37,7 @@ import android.widget.TextView;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,OnGestureListener,OnDoubleTapListener{
-    private static ImageView imageView,imageView1,imageView2,imageView3;
-    int[] images={R.mipmap.ic_launcher_background1,R.mipmap.ic_launcher_background2,R.mipmap.ic_launcher_background,R.mipmap.ic_launcher_background3};
+    private static ImageButton imageButton1,imageButton2,imageButton3,imageButton4;
 
     private TextView textView;
     private GestureDetectorCompat gestureDetect;
@@ -50,16 +50,6 @@ public class Home extends AppCompatActivity
         textView=(TextView)findViewById(R.id.find);
         gestureDetect=new GestureDetectorCompat(this,this);
         gestureDetect.setOnDoubleTapListener(this);
-
-            imageView=(ImageView)findViewById(R.id.imageView1);
-            imageView.setImageResource(images[0]);
-            imageView1=(ImageView)findViewById(R.id.imageView2);
-            imageView1.setImageResource(images[1]);
-            imageView2=(ImageView)findViewById(R.id.imageView3);
-            imageView2.setImageResource(images[2]);
-            imageView3=(ImageView)findViewById(R.id.imageView4);
-            imageView3.setImageResource(images[3]);
-
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);

@@ -9,24 +9,84 @@
     tools:showIn="@layout/app_bar_home">
 
 
-    <TextView
-        android:id="@+id/find"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="507dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="192dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="125dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="64dp"
+                android:text="HotDeals" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="193dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageButton7"
+                        android:layout_width="232dp"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@mipmap/ic_launcher_background1" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton8"
+                        android:layout_width="239dp"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@mipmap/ic_launcher_background" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="117dp"
+                android:layout_height="71dp"
+                android:text="Food" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="201dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/imageButton"
+                        android:layout_width="178dp"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@mipmap/ic_launcher_background1" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton2"
+                        android:layout_width="156dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/ic_launcher_food2" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton3"
+                        android:layout_width="182dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/ic_launcher_food1_round" />
+                </LinearLayout>
+            </HorizontalScrollView>
 
             <TextView
                 android:id="@+id/textView3"
@@ -36,68 +96,38 @@
                 android:layout_marginTop="68dp"
                 android:text="Clothes" />
 
-            <ScrollView
-                android:id="@+id/scrollView2"
-                android:layout_width="363dp"
-                android:layout_height="119dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="48dp">
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="115dp">
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="123dp"
-                        android:layout_height="115dp"
-                        tools:srcCompat="@mipmap/ic_launcher_background" />
+                    <ImageButton
+                        android:id="@+id/imageButton6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@mipmap/ic_launcher_background3" />
 
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="123dp"
-                        android:layout_height="115dp"
-                        tools:srcCompat="@mipmap/ic_launcher_background3" />
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        android:layout_width="173dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/ic_launcher_background3" />
 
+                    <ImageButton
+                        android:id="@+id/imageButton5"
+                        android:layout_width="161dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:srcCompat="@mipmap/ic_launcher_foreground" />
                 </LinearLayout>
-            </ScrollView>
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="125dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="64dp"
-                android:text="Food" />
-
-            <ScrollView
-                android:id="@+id/scrollView1"
-                android:layout_width="363dp"
-                android:layout_height="119dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="39dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="115dp">
-
-                    <ImageView
-                        android:id="@+id/imageView1"
-                        android:layout_width="123dp"
-                        android:layout_height="115dp"
-                        tools:srcCompat="@mipmap/ic_launcher_background1" />
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="123dp"
-                        android:layout_height="115dp"
-                        tools:srcCompat="@mipmap/ic_launcher_background2" />
-
-                </LinearLayout>
-            </ScrollView>
+            </HorizontalScrollView>
 
         </LinearLayout>
-    </HorizontalScrollView>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
