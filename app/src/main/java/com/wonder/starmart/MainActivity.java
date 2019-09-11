@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void firstFragmentChangerListener(){
-        next=(Button)findViewById(R.id.button);
+        next=(Button)findViewById(R.id.button1);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
