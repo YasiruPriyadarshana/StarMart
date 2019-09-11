@@ -1,5 +1,6 @@
 package com.wonder.starmart;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabItem;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -28,6 +30,7 @@ import android.os.Bundle;
 import android.view.GestureDetector.*;
 import android.gesture.Gesture;
 import android.view.MotionEvent;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.view.Menu;
@@ -41,6 +44,7 @@ public class Home extends AppCompatActivity
 
     private TextView textView;
     private GestureDetectorCompat gestureDetect;
+    private Button b1,b2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +52,7 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
 
         textView=(TextView)findViewById(R.id.find);
-
+        onClickListener();
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -128,6 +132,15 @@ public class Home extends AppCompatActivity
         return true;
     }
 
-
+    public void onClickListener(){
+        b1=(Button)findViewById(R.id.b1) ;
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(Home.this,Home_Map.class);
+                startActivity(intent);
+            }
+        });
+    }
 
 }
