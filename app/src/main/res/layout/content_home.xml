@@ -67,6 +67,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginBottom="17dp"
+                android:background="@android:color/transparent"
                 android:text="Rating Shops" />
 
             <HorizontalScrollView
@@ -82,6 +83,7 @@
                         android:id="@+id/imageButton10"
                         android:layout_width="190dp"
                         android:layout_height="130dp"
+                        android:layout_marginLeft="15dp"
                         android:layout_weight="1"
                         android:padding="0dp"
                         android:scaleType="centerCrop"
@@ -91,6 +93,7 @@
                         android:id="@+id/imageButton9"
                         android:layout_width="190dp"
                         android:layout_height="130dp"
+                        android:layout_marginLeft="15dp"
                         android:layout_weight="1"
                         android:padding="0dp"
                         android:scaleType="centerCrop"
@@ -100,6 +103,7 @@
                         android:id="@+id/imageButton11"
                         android:layout_width="190dp"
                         android:layout_height="130dp"
+                        android:layout_marginLeft="15dp"
                         android:layout_weight="1"
                         android:padding="0dp"
                         android:scaleType="centerCrop"
