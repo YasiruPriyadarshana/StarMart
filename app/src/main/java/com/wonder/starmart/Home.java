@@ -44,7 +44,8 @@ public class Home extends AppCompatActivity
 
     private TextView textView;
     private GestureDetectorCompat gestureDetect;
-    private Button b1,b2;
+    private Button b1,b2,food;
+    private ImageButton im1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class Home extends AppCompatActivity
 
         textView=(TextView)findViewById(R.id.find);
         onClickListener();
-
+        imageClick();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -141,6 +142,26 @@ public class Home extends AppCompatActivity
                 startActivity(intent);
             }
         });
+        food=(Button)findViewById(R.id.food);
+        food.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in=new Intent(Home.this,Food.class);
+                startActivity(in);
+            }
+        });
+    }
+
+    private void imageClick(){
+        im1=(ImageButton)findViewById(R.id.imageButton7) ;
+        im1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in=new Intent(Home.this,shop_content.class);
+                startActivity(in);
+            }
+        });
+
     }
 
 }
