@@ -36,7 +36,7 @@ import android.widget.TextView;
 
 
 public class Home extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,OnGestureListener,OnDoubleTapListener{
+        implements NavigationView.OnNavigationItemSelectedListener{
     private static ImageButton imageButton1,imageButton2,imageButton3,imageButton4;
 
     private TextView textView;
@@ -48,8 +48,7 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
 
         textView=(TextView)findViewById(R.id.find);
-        gestureDetect=new GestureDetectorCompat(this,this);
-        gestureDetect.setOnDoubleTapListener(this);
+
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -130,61 +129,5 @@ public class Home extends AppCompatActivity
     }
 
 
-    public boolean onTouchEvent(MotionEvent event) {
-        gestureDetect.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
 
-    @Override
-    public boolean onSingleTapConfirmed(MotionEvent motionEvent) {
-        textView.setText("onSingleTapConfirmed");
-        return false;
-    }
-
-    @Override
-    public boolean onDoubleTap(MotionEvent motionEvent) {
-        textView.setText("onDoubleTap");
-        return false;
-    }
-
-    @Override
-    public boolean onDoubleTapEvent(MotionEvent motionEvent) {
-        textView.setText("onDoubleTapEvent");
-        return false;
-    }
-
-    @Override
-    public boolean onDown(MotionEvent motionEvent) {
-        textView.setText("onDown");
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent motionEvent) {
-        textView.setText("onShowPress");
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent motionEvent) {
-        textView.setText("onSingleTapUp");
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-        textView.setText("onScroll");
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent motionEvent) {
-        textView.setText("onLongPress");
-    }
-
-    @Override
-    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-        textView.setText("onFling");
-        return false;
-    }
 }
