@@ -14,9 +14,11 @@
     <string name="menu_tools">Ranking</string>
     <string name="menu_share">Location</string>
     <string name="menu_send">Contact US</string>
+    <string name="user_Comment">Im really enjoy the food</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_home__maps">Map</string>
     <string name="title_activity_home__map">Map</string>
+    <string name="yasiru_priyadarshana">Yasiru Priyadarshana</string>
 </resources>
