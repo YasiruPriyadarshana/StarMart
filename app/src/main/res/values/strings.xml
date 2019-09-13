@@ -11,7 +11,8 @@
     <string name="menu_home">Account</string>
     <string name="menu_gallery">Notificaton</string>
     <string name="menu_slideshow">Donate</string>
-    <string name="menu_tools">Ranking</string>
+    <string name="menu_addshops">Add Shops</string>
+    <string name="menu_additems">Add items</string>
     <string name="menu_share">Location</string>
     <string name="menu_send">Contact US</string>
     <string name="user_Comment">Im really enjoy the food</string>

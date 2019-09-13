@@ -103,6 +103,10 @@ public class Home extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }if (id == R.id.action_Login) {
+            Intent intent=new Intent(this,LogIN.class);
+            startActivity(intent);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -120,7 +124,9 @@ public class Home extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_additems) {
+
+        }else if (id == R.id.nav_addshops) {
 
         } else if (id == R.id.nav_share) {
 
