@@ -13,7 +13,7 @@
         android:layout_height="197dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/download" />
+        app:srcCompat="@mipmap/downloadshop_sh" />
 
     <ScrollView
         android:id="@+id/scrollView3"
