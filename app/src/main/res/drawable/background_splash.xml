@@ -4,10 +4,15 @@
     <item
         android:drawable="@color/white"/>
 
-    <item>
+    <item
+        android:width="130dp"
+        android:height="85dp"
+        android:gravity="center">
+
         <bitmap
-            android:gravity="center"
+            android:gravity="fill"
             android:src="@mipmap/starmartpic"
+
             />
     </item>
 
