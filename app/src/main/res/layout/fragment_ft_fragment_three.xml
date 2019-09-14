@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#BD3C14"
-    tools:context=".ftFragmentThree">
+    tools:context=".ftFragmentThree"
+    android:layout_weight="6.5">
 
     <EditText
         android:id="@+id/editText4"
@@ -13,7 +14,15 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="400dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="E-mail address" />
+        android:hint="E-mail address"
+        android:inputType="textEmailAddress" />
 
+    <Button
+        android:id="@+id/btnnext3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="550dp"
+        android:background="#D85F73"
+        android:text="next" />
 </FrameLayout>

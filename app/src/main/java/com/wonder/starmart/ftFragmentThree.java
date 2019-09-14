@@ -1,33 +1,62 @@
 package com.wonder.starmart;
 
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ftFragmentThree.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ftFragmentThree#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ftFragmentThree extends Fragment {
 
+    EditText inputmnum;
 
+    View inflatedView = null;
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,@Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view=inflater.inflate(R.layout.fragment_ft_fragment_three,container,false);
+        view.bringToFront();
+        Button btnFrag3=(Button)view.findViewById(R.id.btnnext3);
+        btnFrag3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),Home.class);
+                getActivity().startActivity(intent);
+            }
+        });
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ft_fragment_three, container, false);
+        return view;
     }
+    private void wirteFile(){
+        String textToSave = inputmnum.getText().toString();
+        try {
+            FileOutputStream fileOutputStream = getActivity().openFileOutput("appdata.txt",Context.MODE_PRIVATE);
+            fileOutputStream.write(textToSave.getBytes());
+            fileOutputStream.close();
 
+            Toast.makeText(getActivity(),"text Saved",Toast.LENGTH_SHORT).show();
+
+            inputmnum.setText("");
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
 }

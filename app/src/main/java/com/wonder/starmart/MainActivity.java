@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Thread myThred=new Thread(){
             public void run(){
                 try{
-                    sleep(3000);
+                    sleep(1000);
                     Intent intent=new Intent(MainActivity.this,Starting.class);
                     startActivity(intent);
                     finish();
