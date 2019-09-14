@@ -42,8 +42,9 @@
         android:id="@+id/view"
         style="@style/Divider2"
         android:layout_width="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="125dp" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
         android:id="@+id/textView15"
@@ -56,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/phonenum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="91dp"
@@ -76,14 +77,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/emailadd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="89dp"
         android:layout_marginTop="50dp"
         android:text="hly.priyadarshaa@gmail.com"
         app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/phonenum" />
 
     <TextView
         android:id="@+id/textView20"
@@ -103,7 +104,7 @@
         android:layout_marginTop="50dp"
         android:text="SuperSales"
         app:layout_constraintStart_toEndOf="@+id/textView20"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/emailadd" />
 
     <TextView
         android:id="@+id/textView22"
@@ -136,7 +137,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/decrip"
         android:layout_width="352dp"
         android:layout_height="102dp"
         android:layout_marginStart="28dp"
@@ -153,7 +154,7 @@
         android:layout_marginTop="36dp"
         android:text="shop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+        app:layout_constraintTop_toBottomOf="@+id/decrip" />
 
     <Button
         android:id="@+id/button4"
