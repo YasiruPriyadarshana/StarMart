@@ -6,4 +6,6 @@
     <color name="mycolor1">#B32759</color>
     <color name="mycolor2">#BD3C14</color>
     <color name="white">#FFFFFF</color>
+    <color name="round">#CD90DF</color>
+    <color name="line">#D1D1D1</color>
 </resources>
