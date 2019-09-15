@@ -29,7 +29,7 @@ import java.io.IOException;
 public class ftFragmentThree extends Fragment {
 
     EditText inputmnum;
-
+    Button btnFrag3;
     View inflatedView = null;
     @Nullable
     @Override
@@ -37,9 +37,11 @@ public class ftFragmentThree extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_ft_fragment_three,container,false);
         view.bringToFront();
-        final Button btnFrag3=(Button)view.findViewById(R.id.btnnext3);
+        btnFrag3=(Button)view.findViewById(R.id.btnnext3);
         inputmnum=(EditText)view.findViewById(R.id.inputemail);
-
+        int x=1;
+        String name1 = inputmnum.getText().toString().trim();
+        btnFrag3.setEnabled(!name1.isEmpty());
         inputmnum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -48,15 +50,17 @@ public class ftFragmentThree extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String field=inputmnum.getText().toString().trim();
-                btnFrag3.setEnabled(!field.isEmpty());
+                String name=inputmnum.getText().toString().trim();
+                btnFrag3.setEnabled(!name.isEmpty());
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
 
             }
+
         });
+
 
         btnFrag3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,10 +89,7 @@ public class ftFragmentThree extends Fragment {
             e.printStackTrace();
         }
     }
-    public void onDetach() {
-        super.onDetach();
-        File file = new File(requireActivity().getFilesDir(), "appdata.txt");
-        if (file.exists())
-            requireActivity().deleteFile("appdata.txt");
-    }
+
+
+
 }

@@ -27,7 +27,7 @@ import java.io.OutputStreamWriter;
 public class ftFragmentTwo extends Fragment {
 
     private EditText inputmnum;
-
+    private Button btnFrag2;
     View inflatedView = null;
 
     @Nullable
@@ -36,8 +36,15 @@ public class ftFragmentTwo extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_ft_fragment_two, container, false);
-        final Button btnFrag2 = (Button) view.findViewById(R.id.nextbt);
+        btnFrag2 = (Button) view.findViewById(R.id.nextbt);
         inputmnum=(EditText)view.findViewById(R.id.inputname);
+
+
+
+            String name = inputmnum.getText().toString().trim();
+            btnFrag2.setEnabled(!name.isEmpty());
+
+
         inputmnum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -46,16 +53,16 @@ public class ftFragmentTwo extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String field=inputmnum.getText().toString().trim();
-                btnFrag2.setEnabled(!field.isEmpty());
+                String name=inputmnum.getText().toString().trim();
+                btnFrag2.setEnabled(!name.isEmpty());
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
 
             }
-        });
 
+        });
         inputmnum = (EditText) view.findViewById(R.id.inputname);
         btnFrag2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,12 +103,6 @@ public class ftFragmentTwo extends Fragment {
         }
     }
 
-    public void onDetach() {
-        super.onDetach();
-        File file = new File(requireActivity().getFilesDir(), "appdata.txt");
-        if (file.exists())
-            requireActivity().deleteFile("appdata.txt");
-    }
 
 
 }

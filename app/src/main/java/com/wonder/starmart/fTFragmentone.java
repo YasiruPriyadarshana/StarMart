@@ -1,6 +1,7 @@
 package com.wonder.starmart;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -30,16 +31,23 @@ import java.io.FileInputStream;
 
 public class fTFragmentone extends Fragment {
     private EditText inputmnum;
+    private Button btnFrag;
+    View view;
 
-    View inflatedView = null;
+
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater,@Nullable ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_f_tfragmentone,container,false);
-        final Button btnFrag=(Button)view.findViewById(R.id.btnnext);
-        btnFrag.setEnabled(false);
-        inputmnum=(EditText)view.findViewById(R.id.input);
+        view = inflater.inflate(R.layout.fragment_f_tfragmentone, container, false);
+        btnFrag = (Button) view.findViewById(R.id.btnnext);
+        inputmnum = (EditText) view.findViewById(R.id.input);
+
+
+            String name = inputmnum.getText().toString().trim();
+            btnFrag.setEnabled(!name.isEmpty());
+
+
         inputmnum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -48,25 +56,24 @@ public class fTFragmentone extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String field=inputmnum.getText().toString().trim();
-                btnFrag.setEnabled(false);
-
+                String name=inputmnum.getText().toString().trim();
+                btnFrag.setEnabled(!name.isEmpty());
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
 
             }
-        });
 
+        });
 
         btnFrag.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 wirteFile();
-                FragmentTransaction fr=requireActivity().getSupportFragmentManager().beginTransaction();
-                fr.replace(R.id.fragment_place,new ftFragmentTwo(),null);
+                FragmentTransaction fr = requireActivity().getSupportFragmentManager().beginTransaction();
+                fr.replace(R.id.fragment_place, new ftFragmentTwo(), null);
                 fr.commit();
 
             }
@@ -74,30 +81,36 @@ public class fTFragmentone extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-    public void onDetach() {
-        super.onDetach();
-        File file = new File(requireActivity().getFilesDir(), "appdata.txt");
-        if (file.exists())
-            requireActivity().deleteFile("appdata.txt");
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
     }
 
-    private void wirteFile(){
+
+
+
+    private void wirteFile() {
 
         String textToSave = inputmnum.getText().toString();
-        String space=",";
+        String space = ",";
         try {
-            FileOutputStream fileOutputStream = requireActivity().openFileOutput("appdata.txt",Context.MODE_APPEND);
-            fileOutputStream.write((textToSave+space).getBytes());
+            FileOutputStream fileOutputStream = requireActivity().openFileOutput("appdata.txt", Context.MODE_APPEND);
+            fileOutputStream.write((textToSave + space).getBytes());
             fileOutputStream.close();
 
-            Toast.makeText(getActivity(),"text Saved",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "text Saved", Toast.LENGTH_SHORT).show();
 
 
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
 }
