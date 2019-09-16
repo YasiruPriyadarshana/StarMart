@@ -2,8 +2,10 @@ package com.wonder.starmart;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -69,8 +71,10 @@ public class Starting extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        File file = new File(getFilesDir(), "appdata.txt");
-        if (file.exists())
-            deleteFile("appdata.txt");
-    }
+
+            File file = new File(getFilesDir(), "appdata.txt");
+            if (file.exists())
+                deleteFile("appdata.txt");
+        }
+
 }

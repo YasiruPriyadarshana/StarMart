@@ -1,5 +1,6 @@
 package com.wonder.starmart;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -36,6 +37,9 @@ import android.widget.TextView;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
 
 
 public class Home extends AppCompatActivity
@@ -46,7 +50,7 @@ public class Home extends AppCompatActivity
     private GestureDetectorCompat gestureDetect;
     private Button b1,b2,food;
     private ImageButton im1;
-
+    private long backPressedTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,9 +85,16 @@ public class Home extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        }else if(backPressedTime +2000 > System.currentTimeMillis()){
+            moveTaskToBack(true);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
+            return;
         } else {
-            super.onBackPressed();
+            Toast.makeText(getBaseContext(),"Press again to exit",Toast.LENGTH_SHORT).show();
         }
+
+        backPressedTime = System.currentTimeMillis();
     }
 
     @Override
@@ -169,5 +180,6 @@ public class Home extends AppCompatActivity
         });
 
     }
+
 
 }
