@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -78,12 +79,10 @@ public class LogIN extends AppCompatActivity {
             }
         });
     }
-    protected void onResume() {
-        super.onResume();
-        readFile();
-    }
+
 
     public void readFile(){
+        refresh(1000);
         try {
             FileInputStream fileInputStream = openFileInput("appdata.txt");
             InputStreamReader inputStreamReader=new InputStreamReader(fileInputStream);
@@ -133,5 +132,19 @@ public class LogIN extends AppCompatActivity {
         dialog.show(getSupportFragmentManager(),"Dialog");
     }
 
+    private void refresh(int milliseconds) {
 
+        final Handler handler=new Handler();
+
+        final Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+                Dialog dialog=new Dialog();
+                    readFile();
+
+            }
+        };
+
+        handler.postDelayed(runnable,milliseconds);
+    }
 }

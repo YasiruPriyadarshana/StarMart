@@ -25,6 +25,7 @@ import java.io.InputStreamReader;
 public class Dialog extends AppCompatDialogFragment {
     private EditText duser,dnum,demil;
     private int i;
+
     private String[] array,array2;
     private DatabaseHelper myDb;
     @Override
@@ -60,8 +61,8 @@ public class Dialog extends AppCompatDialogFragment {
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                         wirteFile(duser);
+
                     }
                 })
         ;
@@ -83,7 +84,7 @@ public class Dialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         wirteFile(demil);
-                        update();
+
                     }
                 })
         ;
@@ -106,6 +107,7 @@ public class Dialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         wirteFile(dnum);
+
                     }
                 })
         ;
@@ -126,6 +128,7 @@ public class Dialog extends AppCompatDialogFragment {
     public void seti3(){
         i=3;
     }
+
 
 
     private void wirteFile(EditText text){
