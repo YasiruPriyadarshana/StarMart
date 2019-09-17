@@ -16,8 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.io.FileNotFoundException;
@@ -27,7 +30,7 @@ import java.io.IOException;
 
 
 public class ftFragmentThree extends Fragment {
-
+    private DatabaseHelper mydb;
     EditText inputmnum;
     Button btnFrag3;
     View inflatedView = null;
@@ -37,6 +40,8 @@ public class ftFragmentThree extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_ft_fragment_three,container,false);
         view.bringToFront();
+        mydb = new DatabaseHelper(getContext());
+
         btnFrag3=(Button)view.findViewById(R.id.btnnext3);
         inputmnum=(EditText)view.findViewById(R.id.inputemail);
         int x=1;
@@ -66,6 +71,7 @@ public class ftFragmentThree extends Fragment {
             @Override
             public void onClick(View view) {
                 wirteFile();
+                readFileAndDB();
                 Intent intent=new Intent(getActivity(),Home.class);
                 getActivity().startActivity(intent);
             }
@@ -90,6 +96,37 @@ public class ftFragmentThree extends Fragment {
         }
     }
 
+
+    public void readFileAndDB(){
+        try {
+            FileInputStream fileInputStream = requireActivity().openFileInput("appdata.txt");
+            InputStreamReader inputStreamReader=new InputStreamReader(fileInputStream);
+
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            StringBuffer stringBuffer =new StringBuffer();
+
+
+            String lines;
+            while ((lines = bufferedReader.readLine()) != null){
+                stringBuffer.append(lines + "\n");
+            }
+            String str =stringBuffer.toString();
+            String[] array = str.split(",");
+
+            boolean isInserted = mydb.insertData(Integer.valueOf(array[0]),array[1],array[2]);
+            if (isInserted){
+                Toast.makeText(getContext(),"Data Inserted",Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(getContext(),"Data Not Inserted",Toast.LENGTH_SHORT).show();
+            }
+
+
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
 
 }
