@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -22,6 +23,7 @@ public class LogIN extends AppCompatActivity {
     TextView descriptxt,phnum,emil;
     Button getdata,name,demil,dphonenum;
     DatabaseHelper myDb;
+    private String[] array;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +97,7 @@ public class LogIN extends AppCompatActivity {
                 stringBuffer.append(lines + "\n");
             }
             String str =stringBuffer.toString();
-            String[] array = str.split(",");
+            array = str.split(",");
 
             phnum.setText(array[0]);
             name.setText(array[1]);
@@ -130,4 +132,6 @@ public class LogIN extends AppCompatActivity {
         dialog.seti3();
         dialog.show(getSupportFragmentManager(),"Dialog");
     }
+
+
 }

@@ -48,4 +48,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor res=sqLiteDatabase.rawQuery("SELECT * FROM "+TABLE_NAME,null);
         return res;
     }
+    public Cursor getIDofUser(String name){
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        Cursor res=sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME + " where NAME = '" +name + "'" , null);
+        return res;
+    }
+
+    public boolean updateData(String id,String number,String name,String email){
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(COL_1,id);
+        contentValues.put(COL_2,number);
+        contentValues.put(COL_3,name);
+        contentValues.put(COL_4,email);
+        sqLiteDatabase.update(TABLE_NAME,contentValues,"ID = ?",new String[]{ id });
+        return true;
+    }
 }

@@ -25,9 +25,11 @@ import java.io.InputStreamReader;
 public class Dialog extends AppCompatDialogFragment {
     private EditText duser,dnum,demil;
     private int i;
-    private String[] array;
+    private String[] array,array2;
+    private DatabaseHelper myDb;
     @Override
     public android.app.Dialog onCreateDialog(Bundle savedInstanceState) {
+        myDb=new DatabaseHelper(getContext());
         if (i==1) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             Dialogname(builder);
@@ -81,6 +83,7 @@ public class Dialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         wirteFile(demil);
+                        update();
                     }
                 })
         ;
@@ -158,18 +161,54 @@ public class Dialog extends AppCompatDialogFragment {
         try {
             if(text == dnum) {
                 FileOutputStream fileOutputStream = requireActivity().openFileOutput("appdata.txt", Context.MODE_APPEND);
-                fileOutputStream.write((textToSave + "," + array[1] + "," + array[2]).getBytes());
+                fileOutputStream.write((textToSave + "," + array[1] + "," + array[2]+ "," + array[3]).getBytes());
                 fileOutputStream.close();
             }else if (text == duser){
                 FileOutputStream fileOutputStream = requireActivity().openFileOutput("appdata.txt", Context.MODE_APPEND);
-                fileOutputStream.write((array[0] + "," + textToSave + "," + array[2]).getBytes());
+                fileOutputStream.write((array[0] + "," + textToSave + "," + array[2]+ "," + array[3]).getBytes());
                 fileOutputStream.close();
             }else {
                 FileOutputStream fileOutputStream = requireActivity().openFileOutput("appdata.txt", Context.MODE_APPEND);
-                fileOutputStream.write((array[0] + "," + array[1]+ "," + textToSave ).getBytes());
+                fileOutputStream.write((array[0] + "," + array[1]+ "," + textToSave+ ","  + array[3]).getBytes());
                 fileOutputStream.close();
             }
             Toast.makeText(getActivity(),"text Saved",Toast.LENGTH_SHORT).show();
+
+
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        update();
+    }
+    private void update(){
+        readFile();
+        boolean isUpdated = myDb.updateData(array2[3],
+                array2[0],
+                array2[1],
+                array2[2]);
+        if (isUpdated){
+//            Toast.makeText(getActivity(),"Data Updated",Toast.LENGTH_SHORT).show();
+        }else {
+//            Toast.makeText(getActivity(),"Data Not Updated",Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void readFile(){
+        try {
+            FileInputStream fileInputStream = requireActivity().openFileInput("appdata.txt");
+            InputStreamReader inputStreamReader=new InputStreamReader(fileInputStream);
+
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            StringBuffer stringBuffer =new StringBuffer();
+
+
+            String lines;
+            while ((lines = bufferedReader.readLine()) != null){
+                stringBuffer.append(lines + "\n");
+            }
+            String str =stringBuffer.toString();
+            array2 = str.split(",");
 
 
         } catch (FileNotFoundException e){

@@ -2,9 +2,11 @@ package com.wonder.starmart;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -81,9 +83,10 @@ public class ftFragmentThree extends Fragment {
     }
     private void wirteFile(){
         String textToSave = inputmnum.getText().toString();
+        String space = ",";
         try {
             FileOutputStream fileOutputStream = requireActivity().openFileOutput("appdata.txt",Context.MODE_APPEND);
-            fileOutputStream.write(textToSave.getBytes());
+            fileOutputStream.write((textToSave + space).getBytes());
             fileOutputStream.close();
 
             Toast.makeText(getActivity(),"text Saved",Toast.LENGTH_SHORT).show();
@@ -115,10 +118,21 @@ public class ftFragmentThree extends Fragment {
 
             boolean isInserted = mydb.insertData(Integer.valueOf(array[0]),array[1],array[2]);
             if (isInserted){
-                Toast.makeText(getContext(),"Data Inserted",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(),"Data Inserted",Toast.LENGTH_SHORT).show();
             }else {
-                Toast.makeText(getContext(),"Data Not Inserted",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(),"Data Not Inserted",Toast.LENGTH_SHORT).show();
             }
+
+            Cursor res=mydb.getIDofUser(array[1]);
+            StringBuffer buffer1=new StringBuffer();
+            while (res.moveToNext()){
+                buffer1.append(res.getString(0)+"\n");
+            }
+            Toast.makeText(getContext(),buffer1.toString(),Toast.LENGTH_SHORT).show();
+            FileOutputStream fileOutputStream = requireActivity().openFileOutput("appdata.txt",Context.MODE_APPEND);
+            fileOutputStream.write(buffer1.toString().getBytes());
+
+
 
 
         } catch (FileNotFoundException e){
