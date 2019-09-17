@@ -3,6 +3,7 @@ package com.wonder.starmart;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -18,8 +19,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LogIN extends AppCompatActivity {
-    TextView descriptxt,phnum,emil,name;
-    Button getdata;
+    TextView descriptxt,phnum,emil;
+    Button getdata,name,demil,dphonenum;
     DatabaseHelper myDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +29,31 @@ public class LogIN extends AppCompatActivity {
         descriptxt=(TextView)findViewById(R.id.decrip);
         phnum=(TextView)findViewById(R.id.phonenum) ;
         emil=(TextView)findViewById(R.id.emailadd) ;
-        name=(TextView)findViewById(R.id.name) ;
+        name=(Button) findViewById(R.id.name) ;
+        demil=(Button)findViewById(R.id.demail);
+        dphonenum=(Button)findViewById(R.id.dphonenum);
         getdata=(Button)findViewById(R.id.getdata);
         myDb=new DatabaseHelper(this);
         readFile();
+
+        name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+            }
+        });
+        demil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog2();
+            }
+        });
+        dphonenum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog3();
+            }
+        });
 
         getdata.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +75,10 @@ public class LogIN extends AppCompatActivity {
                 showMessage("Data",buffer.toString());
             }
         });
+    }
+    protected void onResume() {
+        super.onResume();
+        readFile();
     }
 
     public void readFile(){
@@ -87,5 +113,21 @@ public class LogIN extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(Message);
         builder.show();
+    }
+
+    private void openDialog(){
+        Dialog dialog=new Dialog();
+        dialog.seti();
+        dialog.show(getSupportFragmentManager(),"Dialog");
+    }
+    private void openDialog2(){
+        Dialog dialog=new Dialog();
+        dialog.seti2();
+        dialog.show(getSupportFragmentManager(),"Dialog");
+    }
+    private void openDialog3(){
+        Dialog dialog=new Dialog();
+        dialog.seti3();
+        dialog.show(getSupportFragmentManager(),"Dialog");
     }
 }
