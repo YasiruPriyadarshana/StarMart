@@ -32,7 +32,7 @@
         android:orientation="vertical">
 
         <RatingBar
-            android:id="@+id/myrate"
+            android:id="@+id/myrate3"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:numStars="5"

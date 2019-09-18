@@ -24,6 +24,7 @@ public class shop_content extends AppCompatActivity {
     DatabaseHelper mydb;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +50,6 @@ public class shop_content extends AppCompatActivity {
             }
         });
 
-        mydb=new DatabaseHelper(this);
-        mydb.insertDataReview("class","If you are a fan of the chunky, thick dough pizz",5);
 
 
     }
@@ -79,4 +78,6 @@ public class shop_content extends AppCompatActivity {
         }
         return false;
     }
+
+
 }

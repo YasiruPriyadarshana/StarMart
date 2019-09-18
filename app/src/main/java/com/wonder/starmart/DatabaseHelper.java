@@ -15,8 +15,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_4="EMAIL";
 
     private static final String TABLE_NAME2="UserReview_table";
-    private static final String COLM_1="ID";
-    private static final String COLM_2="NAME";
+    private static final String COLM_1="RID";
+    private static final String COLM_2="RNAME";
     private static final String COLM_3="DESCRIPTION";
     private static final String COLM_4="RATE";
 
@@ -27,7 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, MOBILE_NUMBER INTEGER, NAME TEXT, EMAIL TEXT)");
-        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME2 + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, DESCRIPTION TEXT, RATE INTEGER)");
+        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME2 + "(RID INTEGER PRIMARY KEY AUTOINCREMENT, RNAME TEXT, DESCRIPTION TEXT, RATE FLOAT)");
     }
 
     @Override
@@ -75,7 +75,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //for review
-    public Boolean insertDataReview(String name,String description,int rate){
+    public Boolean insertDataReview(String name,String description,float rate){
         SQLiteDatabase sqLiteDatabase= this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(COLM_2,name);
@@ -94,6 +94,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getAllDataReview(){
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
         Cursor res=sqLiteDatabase.rawQuery("SELECT * FROM "+TABLE_NAME2,null);
+        return res;
+    }
+    public Cursor getIDofReview(String rname){
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        Cursor res=sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME2 + " where RNAME = '" +rname + "'" , null);
         return res;
     }
 }
