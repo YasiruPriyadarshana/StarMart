@@ -23,14 +23,13 @@ public class shop_content extends AppCompatActivity {
     private Button review;
     DatabaseHelper mydb;
 
-    String tr="true";
-    String loading;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_content);
         readFile();
-        if (loading.intern()==tr.intern()) {
+        if (readFile()) {
             FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
             fr.add(R.id.fragment, new commentone());
             fr.commit();
@@ -56,25 +55,28 @@ public class shop_content extends AppCompatActivity {
 
     }
 
-    public void readFile(){
+    public boolean readFile(){
         try {
             FileInputStream fileInputStream = openFileInput("appreview.txt");
             InputStreamReader inputStreamReader=new InputStreamReader(fileInputStream);
+
 
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             StringBuffer stringBuffer =new StringBuffer();
 
             String lines;
+            if ((lines = bufferedReader.readLine()) != null){
+                return true;
+            }
             while ((lines = bufferedReader.readLine()) != null){
                 stringBuffer.append(lines);
             }
-            loading=stringBuffer.toString();
-            Toast.makeText(this,loading,Toast.LENGTH_SHORT).show();
+
         } catch (FileNotFoundException e){
             e.printStackTrace();
         }catch (IOException e){
             e.printStackTrace();
         }
-
+        return false;
     }
 }
