@@ -23,13 +23,14 @@ public class shop_content extends AppCompatActivity {
     private Button review;
     DatabaseHelper mydb;
 
+    String tr="true";
     String loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_content);
         readFile();
-        if (loading.equals("true")) {
+        if (loading.intern()==tr.intern()) {
             FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
             fr.add(R.id.fragment, new commentone());
             fr.commit();
