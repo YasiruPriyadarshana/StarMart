@@ -20,7 +20,7 @@ public class commenttwo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_commentone, container, false);
+        view = inflater.inflate(R.layout.fragment_commenttwo, container, false);
 
         button=(Button)view.findViewById(R.id.writereview);
         button.setOnClickListener(new View.OnClickListener() {

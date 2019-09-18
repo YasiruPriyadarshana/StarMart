@@ -10,22 +10,34 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class shop_content extends AppCompatActivity {
     private Button review;
     DatabaseHelper mydb;
 
-
+    String loading;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_content);
-
-        FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
-        fr.add(R.id.fragment, new commentone());
-        fr.commit();
+        readFile();
+        if (loading.equals("true")) {
+            FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
+            fr.add(R.id.fragment, new commentone());
+            fr.commit();
+        }else {
+            FragmentTransaction fr = getSupportFragmentManager().beginTransaction();
+            fr.add(R.id.fragment, new commenttwo());
+            fr.commit();
+        }
 
         review=(Button)findViewById(R.id.reviewbt);
         review.setOnClickListener(new View.OnClickListener() {
@@ -41,9 +53,27 @@ public class shop_content extends AppCompatActivity {
         mydb.insertDataReview("class","If you are a fan of the chunky, thick dough pizz",5);
 
 
+    }
 
+    public void readFile(){
+        try {
+            FileInputStream fileInputStream = openFileInput("appreview.txt");
+            InputStreamReader inputStreamReader=new InputStreamReader(fileInputStream);
 
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            StringBuffer stringBuffer =new StringBuffer();
 
+            String lines;
+            while ((lines = bufferedReader.readLine()) != null){
+                stringBuffer.append(lines);
+            }
+            loading=stringBuffer.toString();
+            Toast.makeText(this,loading,Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
     }
 }

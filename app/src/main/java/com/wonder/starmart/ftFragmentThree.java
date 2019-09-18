@@ -128,7 +128,7 @@ public class ftFragmentThree extends Fragment {
             while (res.moveToNext()){
                 buffer1.append(res.getString(0)+"\n");
             }
-            Toast.makeText(getContext(),buffer1.toString(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"text Saved",Toast.LENGTH_SHORT).show();
             FileOutputStream fileOutputStream = requireActivity().openFileOutput("appdata.txt",Context.MODE_APPEND);
             fileOutputStream.write(buffer1.toString().getBytes());
 
