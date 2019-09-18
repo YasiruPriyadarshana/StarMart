@@ -27,7 +27,7 @@ public class commenttwo extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getActivity(),AddComment.class);
-                startActivity(intent);
+                getActivity().startActivity(intent);
             }
         });
         return view;
