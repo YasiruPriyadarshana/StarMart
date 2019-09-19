@@ -34,7 +34,7 @@ public class reviewersListAdapter  extends ArrayAdapter<User> {
         LayoutInflater inflater=LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
-        TextView tname=(TextView)convertView.findViewById(R.id.name);
+        TextView tname=(TextView)convertView.findViewById(R.id.myname);
         TextView tdesc=(TextView)convertView.findViewById(R.id.desc);
         RatingBar bar=(RatingBar)convertView.findViewById(R.id.ratingBar);
         ImageView imageView=(ImageView)convertView.findViewById(R.id.userIcon);

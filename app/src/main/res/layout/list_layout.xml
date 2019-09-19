@@ -19,7 +19,7 @@ android:layout_height="match_parent">
             app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/myname"
             android:layout_width="247dp"
             android:layout_height="wrap_content"
             android:layout_margin="13dp"

@@ -25,7 +25,7 @@ public class AddComment extends AppCompatActivity {
     EditText reviewcomment;
     RatingBar rate;
     float val;
-    private String[] array,array2;
+    private String[] array,array2,id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +46,17 @@ public class AddComment extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                wirteFile();
-                readFileName();
 
-                mydb=new DatabaseHelper(AddComment.this);
-                mydb.insertDataReview(array[1],reviewcomment.getText().toString(),val);
-                readFileAndDB();
+                mydb = new DatabaseHelper(AddComment.this);
+                if (!readFileforID()) {
 
+                    wirteFile();
+                    readFileName();
+                    mydb.insertDataReview(array[1], reviewcomment.getText().toString(), val);
+                    readFileAndDB();
+                }else {
+                    update();
+                }
                 Intent intent=new Intent(AddComment.this,shop_content.class);
                 startActivity(intent);
             }
@@ -99,6 +103,7 @@ public class AddComment extends AppCompatActivity {
         }
     }
 
+
     public void readFileAndDB(){
         try {
             FileInputStream fileInputStream = openFileInput("appdata.txt");
@@ -121,7 +126,7 @@ public class AddComment extends AppCompatActivity {
             while (res.moveToNext()){
                 buffer1.append(res.getString(0)+"\n");
             }
-            Toast.makeText(this,"saved",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this,"saved",Toast.LENGTH_SHORT).show();
             FileOutputStream fileOutputStream =openFileOutput("appreview.txt",Context.MODE_APPEND);
             fileOutputStream.write(buffer1.toString().getBytes());
 
@@ -131,5 +136,47 @@ public class AddComment extends AppCompatActivity {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    private void update(){
+        readFileforID();
+        readFileName();
+        boolean isUpdated = mydb.updateDataReview(id[1],
+                array[1],reviewcomment.getText().toString(),String.valueOf(val));
+        if (isUpdated){
+            Toast.makeText(this,"review edited",Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this,"review  Not edited",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public boolean readFileforID(){
+
+            try {
+                FileInputStream fileInputStream = openFileInput("appreview.txt");
+                InputStreamReader inputStreamReader=new InputStreamReader(fileInputStream);
+
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                StringBuffer stringBuffer =new StringBuffer();
+
+
+                String lines;
+                while ((lines = bufferedReader.readLine()) != null){
+                    stringBuffer.append(lines + "\n");
+
+                }
+
+                String str =stringBuffer.toString();
+                id = str.split(",");
+//                Toast.makeText(this,id[1],Toast.LENGTH_SHORT).show();
+                return true;
+
+            } catch (FileNotFoundException e){
+                e.printStackTrace();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+            return false;
     }
 }

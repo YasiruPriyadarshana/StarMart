@@ -90,6 +90,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+    public boolean updateDataReview(String id,String name,String description,String rate){
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(COLM_1,id);
+        contentValues.put(COLM_2,name);
+        contentValues.put(COLM_3,description);
+        contentValues.put(COLM_4,rate);
+        sqLiteDatabase.update(TABLE_NAME2,contentValues,"RID = ?",new String[]{ id });
+        return true;
+    }
 
     public Cursor getAllDataReview(){
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
@@ -99,6 +109,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getIDofReview(String rname){
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
         Cursor res=sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME2 + " where RNAME = '" +rname + "'" , null);
+        return res;
+    }
+    public Cursor getReviewFromId(String id){
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        Cursor res=sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME2 + " where RID = ?",new String[]{ id } , null);
         return res;
     }
 }

@@ -3,22 +3,18 @@ package com.wonder.starmart;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class LogIN extends AppCompatActivity {
     TextView descriptxt,phnum,emil;
@@ -32,7 +28,7 @@ public class LogIN extends AppCompatActivity {
         descriptxt=(TextView)findViewById(R.id.decrip);
         phnum=(TextView)findViewById(R.id.phonenum) ;
         emil=(TextView)findViewById(R.id.emailadd) ;
-        name=(Button) findViewById(R.id.name) ;
+        name=(Button) findViewById(R.id.myname) ;
         demil=(Button)findViewById(R.id.demail);
         dphonenum=(Button)findViewById(R.id.dphonenum);
         getdata=(Button)findViewById(R.id.getdata);
