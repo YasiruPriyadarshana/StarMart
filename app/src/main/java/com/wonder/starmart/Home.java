@@ -134,7 +134,8 @@ public class Home extends AppCompatActivity
             Intent intent=new Intent(Home.this,ItemMain.class);
             startActivity(intent);
         }else if (id == R.id.nav_addshops) {
-
+            Intent intent=new Intent(Home.this,AddShopsMain.class);
+            startActivity(intent);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
