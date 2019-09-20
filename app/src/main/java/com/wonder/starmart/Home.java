@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
@@ -44,11 +45,14 @@ public class Home extends AppCompatActivity
     private Button b1,b2,food;
     private ImageButton im1;
     private long backPressedTime;
+  
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
 
         textView=(TextView)findViewById(R.id.find);
         onClickListener();

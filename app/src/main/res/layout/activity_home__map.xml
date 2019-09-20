@@ -62,7 +62,8 @@ tools:context=".Home_Map">
                 android:id="@+id/imageView6"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:src="@mipmap/ic_app" />
+                android:src="@mipmap/ic_app"
+                app:srcCompat="@mipmap/ic_app1" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -74,9 +75,9 @@ tools:context=".Home_Map">
         android:layout_width="match_parent"
         android:layout_height="391dp"
         android:layout_marginTop="24dp"
+        map:layout_constraintStart_toStartOf="parent"
         map:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
-        tools:context=".Home_Map"
-        tools:layout_editor_absoluteX="2dp" />
+        tools:context=".Home_Map" />
 
     <SearchView
         android:id="@+id/searchView"

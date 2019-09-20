@@ -10,6 +10,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
@@ -31,6 +32,7 @@ public class Home_Map extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     private SearchView search;
     private String location;
+    float x1,x2,y1,y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,5 +140,23 @@ public class Home_Map extends FragmentActivity implements OnMapReadyCallback {
         }
     }
 
-
+    public boolean onTouchEvent(MotionEvent touchEvent){
+        switch (touchEvent.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                x1 = touchEvent.getX();
+                y1 = touchEvent.getY();
+            case MotionEvent.ACTION_UP:
+                x2 = touchEvent.getX();
+                y2 = touchEvent.getY();
+                if(x1>x2){
+                    Intent i=new Intent(Home_Map.this,Home.class);
+                    startActivity(i);
+                }else if(x1<x2){
+                    Intent i=new Intent(Home_Map.this,Home.class);
+                    startActivity(i);
+                }
+                break;
+        }
+        return false;
+    }
 }
