@@ -3,10 +3,12 @@ package com.wonder.starmart;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,10 +26,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class Home_Map extends FragmentActivity implements OnMapReadyCallback {
-    private Button b1,b2;
+    private static final int MY_REQUEST_INT =177;
+    private Button b1, b2,zoommin,zoomout;
     private GoogleMap mMap;
     private SearchView search;
     private String location;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +41,25 @@ public class Home_Map extends FragmentActivity implements OnMapReadyCallback {
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         onClickListener();
-
-        search=(SearchView)findViewById(R.id.searchView);
+        zoommin=(Button)findViewById(R.id.zoomin);
+        zoomout=(Button)findViewById(R.id.zoomout);
+        zoommin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mMap.animateCamera(CameraUpdateFactory.zoomIn());
+            }
+        });
+        zoomout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mMap.animateCamera(CameraUpdateFactory.zoomOut());
+            }
+        });
+        search = (SearchView) findViewById(R.id.searchView);
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                location=s;
+                location = s;
                 onSearch();
                 return false;
             }
@@ -68,11 +85,24 @@ public class Home_Map extends FragmentActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng Malabe = new LatLng(6.905854, 79.969552);
-        mMap.addMarker(new MarkerOptions().position(Malabe).title("Marker in Malabe"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Malabe,10F));
 
+
+        // Add a marker in Sydney and move the camera
+//        LatLng Malabe = new LatLng(6.905854, 79.969552);
+//        mMap.addMarker(new MarkerOptions().position(Malabe).title("Marker in Malabe"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Malabe,10F));
+        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+
+            if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION},MY_REQUEST_INT
+                );
+            }
+            return;
+        }else {
+            mMap.setMyLocationEnabled(true);
+        }
     }
 
     public void onClickListener(){

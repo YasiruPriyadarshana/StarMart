@@ -72,8 +72,8 @@ tools:context=".Home_Map">
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="103dp"
+        android:layout_height="391dp"
+        android:layout_marginTop="24dp"
         map:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
         tools:context=".Home_Map"
         tools:layout_editor_absoluteX="2dp" />
@@ -87,4 +87,30 @@ tools:context=".Home_Map">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/zoomin"
+        android:layout_width="46dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="336dp"
+        android:background="@android:color/transparent"
+        android:padding="0dp"
+        android:text="+"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/zoomout"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="312dp"
+        android:layout_marginTop="384dp"
+        android:background="@android:color/transparent"
+        android:padding="0dp"
+        android:text="-"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
