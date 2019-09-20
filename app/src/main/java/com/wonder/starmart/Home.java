@@ -1,8 +1,8 @@
 package com.wonder.starmart;
 
-import android.app.Activity;
+
 import android.content.Intent;
-import android.media.Image;
+
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -18,28 +18,21 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabItem;
+
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GestureDetectorCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.os.Bundle;
-import android.view.GestureDetector.*;
-import android.gesture.Gesture;
-import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.ImageButton;
+
 import android.widget.TextView;
 import android.view.Menu;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
-import java.io.File;
+
 
 
 public class Home extends AppCompatActivity
@@ -51,6 +44,7 @@ public class Home extends AppCompatActivity
     private Button b1,b2,food;
     private ImageButton im1;
     private long backPressedTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
