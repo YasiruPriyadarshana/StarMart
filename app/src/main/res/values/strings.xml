@@ -10,7 +10,7 @@
 
     <string name="menu_home">Account</string>
     <string name="menu_gallery">Notificaton</string>
-    <string name="menu_slideshow">Donate</string>
+
     <string name="menu_addshops">Add Shops</string>
     <string name="menu_additems">Add items</string>
     <string name="menu_share">Location</string>
@@ -23,4 +23,13 @@
     <string name="title_activity_home__map">Map</string>
     <string name="yasiru_priyadarshana">Yasiru Priyadarshana</string>
     <string name="desc">A product description is the marketing copy used to describe a product\'s value proposition to potential customers. A compelling product description provides customers with details around features</string>
+
+
+    <string name="category">Categories</string>
+    <string name="name">Category Name</string>
+    <string name="photo">Add Image</string>
+    <string name="add1">Add Category</string>
+    <string name="add2">Add Item</string>
+    <string name="admin">Admin Page</string>
+
 </resources>

@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ItemMain"></activity>
+        <activity android:name=".AdminMain"></activity>
+        <activity android:name=".ItemMain" />
         <activity android:name=".AddComment" />
         <activity android:name=".review" />
         <activity android:name=".Starting" />

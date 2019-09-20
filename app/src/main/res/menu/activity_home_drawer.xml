@@ -21,9 +21,9 @@
             android:icon="@drawable/ic_menu_additems"
             android:title="@string/menu_additems" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_catagory"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="Catagory Manage" />
     </group>
 
     <item android:title="Communicate">
